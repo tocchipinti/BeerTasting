@@ -1,0 +1,115 @@
+---
+openapi: 3.0.3
+info:
+  title: Car API
+  version: 1.1.0
+paths:
+  /cars:
+    get:
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListCar'
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CarDTO'
+      responses:
+        "200":
+          description: OK
+  /cars/filter:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CarFilterRequest'
+      responses:
+        "200":
+          description: OK
+  /cars/recommend:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CarRecommendationRequest'
+      responses:
+        "200":
+          description: OK
+components:
+  schemas:
+    Car:
+      type: object
+      properties:
+        annualMaintenanceCost:
+          format: double
+          type: number
+        fuelConsumption:
+          format: int32
+          type: integer
+        id:
+          format: int64
+          type: integer
+        make:
+          type: string
+        model:
+          type: string
+        price:
+          format: double
+          type: number
+        releaseYear:
+          format: int32
+          type: integer
+        version:
+          type: string
+    ListCar:
+      type: array
+      items:
+        $ref: '#/components/schemas/Car'
+    CarFilterRequest:
+      type: object
+      properties:
+        make:
+          type: string
+        year:
+          format: int32
+          type: integer
+    CarRecommendationRequest:
+      type: object
+      properties:
+        distance:
+          format: int32
+          type: integer
+        fuelPrice:
+          format: double
+          type: number
+        period:
+          format: int32
+          type: integer
+    CarDTO:
+      type: object
+      properties:
+        annualMaintenanceCost:
+          format: double
+          type: number
+        fuelConsumption:
+          format: int32
+          type: integer
+        make:
+          type: string
+        model:
+          type: string
+        price:
+          format: double
+          type: number
+        releaseYear:
+          format: int32
+          type: integer
+        version:
+          type: string
