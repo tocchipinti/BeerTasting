@@ -1,6 +1,6 @@
 # Beertasting app
 
-This project will be a beertasting app for home use
+A BeerTasting app for home use. Also a chance to try out Quarkus and React 
 
 # Instructions for running
 The application has some initial data in dev mode.
